@@ -115,3 +115,53 @@
   .cell { width: 40px; height: 40px; font-size: 1rem; }
   .wl-game-playagain { font-size: 0.95rem; padding: 8px 16px; }
 }
+
+.keyboard {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 15px;
+    gap: 6px;
+  }
+  
+  .keyboard button {
+    padding: 10px 14px;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: #d3d6da;
+    color: #000;
+    transition: background 0.2s;
+  }
+  
+  .keyboard button.correct { background-color: #6aaa64; color: #fff; }
+  .keyboard button.present { background-color: #c9b458; color: #fff; }
+  .keyboard button.absent { background-color: #787c7e; color: #fff; }
+  
+  .keyboard button:hover { filter: brightness(0.9); }
+  
+  @media (max-width: 600px) {
+    .keyboard button { padding: 8px 10px; font-size: 0.9rem; }
+  }
+
+  .wl-game-giveup {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    background-color: #e63946;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-left: 10px;
+    transition: background-color 0.3s;
+  }
+  
+  .wl-game-giveup:hover {
+    background-color: #d62828;
+  }
+  
+  
