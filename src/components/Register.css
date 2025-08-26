@@ -1,0 +1,124 @@
+/* Container */
+.fsr-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    padding: 20px;
+    background: linear-gradient(120deg, #ffecd2, #fcb69f);
+    animation: bgAnimation 15s ease infinite;
+  min-height: 100vh;
+  }
+  
+  /* Background gradient animation */
+  @keyframes bgAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  /* Form */
+  .fsr-form {
+    background: rgba(255,255,255,0.95);
+    padding: 30px 45px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+    align-items: center;
+    transition: transform 0.3s;
+  }
+  
+  .fsr-form:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* Title */
+  .fsr-title {
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin-bottom: 25px;
+    text-align: center;
+  }
+  
+  .fsr-title-facts {
+    color: #ff6f61;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px #ffeaa7;
+  }
+  
+  .fsr-title-wordle {
+    color: #6a89cc;
+    font-size: 1.8rem;
+    margin-left: 5px;
+    text-shadow: 1px 1px #f7d794;
+  }
+  
+  /* Inputs */
+  .fsr-input {
+    width: 100%;
+    padding: 14px 18px;
+    margin-bottom: 18px;
+    border-radius: 12px;
+    border: 2px solid #ddd;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s;
+  }
+  
+  .fsr-input:focus {
+    border-color: #ff6f61;
+    box-shadow: 0 0 8px rgba(255,111,97,0.3);
+    outline: none;
+  }
+  
+  /* Button */
+  .fsr-button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #ff6f61, #ffb86c);
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.3s;
+  }
+  
+  .fsr-button:hover {
+    background: linear-gradient(135deg, #ffb86c, #ff6f61);
+    transform: translateY(-2px);
+  }
+  
+  /* Switch link */
+  .fsr-switch {
+    margin-top: 15px;
+    font-size: 0.95rem;
+    color: #555;
+    text-align: center;
+  }
+  
+  .fsr-link {
+    color: #6a89cc;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  
+  .fsr-link:hover {
+    color: #4834d4;
+    text-decoration: underline;
+  }
+  
+  /* Responsive */
+  @media (max-width: 500px) {
+    .fsr-title { font-size: 1.8rem; }
+    .fsr-title-facts { font-size: 2rem; }
+    .fsr-title-wordle { font-size: 1.5rem; }
+    .fsr-input { font-size: 0.95rem; padding: 12px 14px; }
+    .fsr-button { font-size: 1rem; padding: 12px; }
+  }
+  

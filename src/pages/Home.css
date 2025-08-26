@@ -1,0 +1,100 @@
+/* Container */
+.wl-home-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 0px;
+    box-sizing: border-box;
+    background: linear-gradient(135deg, #e0f7fa, #f1f8e9); /* soft gradient */
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Header */
+  .wl-home-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding: 0 10px;
+  }
+  
+  .wl-home-welcome {
+    font-size: 2rem;
+    color: #004d40; /* deep teal */
+  }
+  
+  .wl-home-logout {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #f4511e; /* vibrant orange */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .wl-home-logout:hover {
+    background-color: #d84315;
+  }
+  
+  /* Main content */
+  .wl-home-main {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Game container */
+  
+  /* Leaderboard container */
+  .wl-home-leaderboard{
+    flex: 1;
+    width: 100%;
+    max-width: 300px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+    border-left: 5px solid #ffb74d; /* amber accent left border */
+  }
+  
+  /* Auth pages stacked for mobile */
+  .wl-auth-container-w {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+  }
+  
+  /* Desktop / larger screens */
+  @media (min-width: 768px) {
+    .wl-home-main {
+      flex-direction: row;
+      gap: 40px;
+      align-items: flex-start;
+      justify-content: center;
+    }
+  
+    .wl-home-game {
+      max-width: 600px;
+    }
+  
+    .wl-home-leaderboard {
+      position: sticky;
+      top: 25px;
+      max-height: calc(100vh - 60px);
+      overflow-y: auto;
+    }
+  }
+  
+  /* Very large screens */
+  @media (min-width: 1200px) {
+    .wl-home-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+  }
+  

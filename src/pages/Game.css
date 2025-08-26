@@ -1,0 +1,117 @@
+/* Container */
+.wl-game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #222;
+}
+
+/* Title */
+.wl-game-title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.fact {
+  font-weight: 700;
+  font-size: 2.4rem;
+  color: #1e90ff; /* nice blue */
+}
+
+.wordle {
+  font-weight: 500;
+  font-size: 1.8rem;
+  color: #555;
+}
+
+/* Game Over Section */
+.wl-game-over {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.wl-game-over-text {
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+  color: #333;
+  word-wrap: break-word;
+}
+
+/* Play Again button */
+.wl-game-playagain {
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: #1e90ff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.wl-game-playagain:hover {
+  background-color: #187bcd;
+  transform: translateY(-2px);
+}
+
+/* Loading text */
+.wl-game-loading {
+  font-size: 1.1rem;
+  color: #666;
+}
+
+/* Rows & cells (board) */
+.row {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.cell {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+  border: 2px solid #ccc;
+  text-transform: uppercase;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.cell.correct {
+  background-color: #6aaa64; /* green */
+  color: white;
+  border-color: #6aaa64;
+}
+
+.cell.present {
+  background-color: #c9b458; /* yellow */
+  color: white;
+  border-color: #c9b458;
+}
+
+.cell.absent {
+  background-color: #787c7e; /* gray */
+  color: white;
+  border-color: #787c7e;
+}
+
+/* Mobile adjustments */
+@media (max-width: 500px) {
+  .wl-game-title { font-size: 1.6rem; }
+  .fact { font-size: 1.9rem; }
+  .wordle { font-size: 1.3rem; }
+  .cell { width: 40px; height: 40px; font-size: 1rem; }
+  .wl-game-playagain { font-size: 0.95rem; padding: 8px 16px; }
+}
