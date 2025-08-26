@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:5000/api", // backend URL
+  baseURL: "https://wordlebackend-d520.onrender.com", // backend URL
 });
 
 // Attach JWT token if exists
