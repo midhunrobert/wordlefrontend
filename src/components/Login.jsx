@@ -36,6 +36,7 @@ export default function Login({ onAuth, onSwitchToRegister }) {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           placeholder="Username"
+          disabled={loading}  // prevent multiple clicks
           required
         />
         <input
@@ -44,9 +45,17 @@ export default function Login({ onAuth, onSwitchToRegister }) {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Password"
+          disabled={loading}  // prevent multiple clicks
           required
         />
-        <button type="submit" className="fsl-button">Login</button>
+        <button 
+          type="submit" 
+          className="fsl-button" 
+          disabled={loading}  // prevent multiple clicks
+        >
+          {loading ? "Logging in..." : "Login"}
+        </button>
+
         {loading && <div className="fsl-loader"></div>} {/* optional spinner */}
 
         <p className="fsl-switch">
