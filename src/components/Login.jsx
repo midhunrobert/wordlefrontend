@@ -5,15 +5,21 @@ import './Login.css';
 export default function Login({ onAuth, onSwitchToRegister }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false); // NEW
+
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setLoading(true); // start loading
+
     try {
       const res = await API.post("/auth/login", { username, password });
       localStorage.setItem("token", res.data.token);
       onAuth(res.data.user);
     } catch (err) {
       alert(err.response?.data?.message || "Login failed");
+    }finally {
+      setLoading(false); // stop loading no matter what
     }
   };
 
@@ -41,6 +47,7 @@ export default function Login({ onAuth, onSwitchToRegister }) {
           required
         />
         <button type="submit" className="fsl-button">Login</button>
+        {loading && <div className="fsl-loader"></div>} {/* optional spinner */}
 
         <p className="fsl-switch">
           Not registered?{" "}
