@@ -5,15 +5,21 @@ import './Register.css';
 export default function Register({ onAuth, onSwitchToLogin }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false); // NEW
+
 
   const handleRegister = async (e) => {
     e.preventDefault();
+    setLoading(true);
+
     try {
       const res = await API.post("/auth/register", { username, password });
       localStorage.setItem("token", res.data.token);
       onAuth(res.data.user);
     } catch (err) {
       alert(err.response?.data?.message || "Registration failed");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -30,6 +36,7 @@ export default function Register({ onAuth, onSwitchToLogin }) {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           placeholder="Username"
+          disabled={loading}
           required
         />
         <input
@@ -38,9 +45,16 @@ export default function Register({ onAuth, onSwitchToLogin }) {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Password"
+          disabled={loading}
           required
         />
-        <button type="submit" className="fsr-button">Register</button>
+        <button 
+          type="submit" 
+          className="fsr-button" 
+          disabled={loading}
+        >
+          {loading ? "Registering..." : "Register"}
+        </button>
 
         <p className="fsr-switch">
           Already have an account?{" "}
