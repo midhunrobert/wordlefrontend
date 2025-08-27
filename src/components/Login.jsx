@@ -56,7 +56,6 @@ export default function Login({ onAuth, onSwitchToRegister }) {
           {loading ? "Logging in..." : "Login"}
         </button>
 
-        {loading && <div className="fsl-loader"></div>} {/* optional spinner */}
 
         <p className="fsl-switch">
           Not registered?{" "}
