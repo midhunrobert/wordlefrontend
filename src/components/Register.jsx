@@ -5,11 +5,19 @@ import './Register.css';
 export default function Register({ onAuth, onSwitchToLogin }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false); // NEW
-
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [errorModal, setErrorModal] = useState(""); // modal message
 
   const handleRegister = async (e) => {
     e.preventDefault();
+
+    // Password match check
+    if (password !== confirmPassword) {
+      setErrorModal("Passwords do not match!");
+      return;
+    }
+
     setLoading(true);
 
     try {
@@ -17,7 +25,7 @@ export default function Register({ onAuth, onSwitchToLogin }) {
       localStorage.setItem("token", res.data.token);
       onAuth(res.data.user);
     } catch (err) {
-      alert(err.response?.data?.message || "Registration failed");
+      setErrorModal(err.response?.data?.message || "Registration failed");
     } finally {
       setLoading(false);
     }
@@ -39,6 +47,7 @@ export default function Register({ onAuth, onSwitchToLogin }) {
           disabled={loading}
           required
         />
+
         <input
           className="fsr-input"
           type="password"
@@ -48,6 +57,17 @@ export default function Register({ onAuth, onSwitchToLogin }) {
           disabled={loading}
           required
         />
+
+        <input
+          className="fsr-input"
+          type="password"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          placeholder="Re-enter Password"
+          disabled={loading}
+          required
+        />
+
         <button 
           type="submit" 
           className="fsr-button" 
@@ -63,6 +83,21 @@ export default function Register({ onAuth, onSwitchToLogin }) {
           </span>
         </p>
       </form>
+
+      {/* Error Modal */}
+      {errorModal && (
+        <div className="fsr-modal-overlay">
+          <div className="fsr-modal">
+            <p>{errorModal}</p>
+            <button 
+              onClick={() => setErrorModal("")} 
+              className="fsr-modal-close"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

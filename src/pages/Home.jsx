@@ -41,7 +41,7 @@ export default function Home() {
   return (
     <div className="wl-home-container">
       <header className="wl-home-header">
-        <h1 className="wl-home-welcome">Welcome, {user.username}</h1>
+        <h1 className="wl-home-welcome">Hi, {user.username}</h1>
         <button className="wl-home-logout" onClick={() => { localStorage.removeItem("token"); setUser(null); }}>
           Logout
         </button>

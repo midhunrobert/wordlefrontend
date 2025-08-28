@@ -7,13 +7,15 @@ import './Game.css';
 export default function Game({ onLeaderboardUpdate }) {
   const [game, setGame] = useState(null);
   const [currentGuess, setCurrentGuess] = useState("");
-  const [keyStates, setKeyStates] = useState({}); // Tracks correct/present/absent keys
+  const [keyStates, setKeyStates] = useState({});
+  const [popupMessage, setPopupMessage] = useState(""); // NEW: for errors & game over
 
   const startNewGame = async () => {
     const res = await API.post("/game/start");
     setGame(res.data);
     setCurrentGuess("");
     setKeyStates({});
+    setPopupMessage(""); // reset popup when starting new game
   };
 
   useEffect(() => {
@@ -59,7 +61,7 @@ export default function Game({ onLeaderboardUpdate }) {
       setGame(res.data);
       setCurrentGuess("");
 
-      // Update key colors based on feedback
+      // Update key colors
       const newKeyStates = { ...keyStates };
       res.data.guesses.slice(-1)[0]?.feedback.forEach((f, i) => {
         const letter = res.data.guesses.slice(-1)[0].word[i].toUpperCase();
@@ -71,23 +73,18 @@ export default function Game({ onLeaderboardUpdate }) {
 
       if (res.data.status !== "playing" && onLeaderboardUpdate) {
         onLeaderboardUpdate();
+        setPopupMessage(`Game Over! ${res.data.status.toUpperCase()} \nSolution: ${res.data.solution}`);
       }
 
     } catch (err) {
-      alert(err.response?.data?.message || "Guess failed");
+      setPopupMessage(err.response?.data?.message || "Guess failed"); // show error in popup
     }
   };
 
   return (
     <div className="wl-game-container">
-      <h2 className="wl-game-title">
-        <span className="wl-facts">FACTS</span>
-        <span className="wl-wordle">wordle</span>
-      </h2>
-
       {game ? (
         <>
-        
           <Board 
             guesses={game.guesses} 
             maxAttempts={game.maxAttempts} 
@@ -95,12 +92,15 @@ export default function Game({ onLeaderboardUpdate }) {
           />
           <Keyboard onKeyPress={handleKeyPress} keyStates={keyStates} />
 
-          {game.status !== "playing" && (
-            <div className="wl-game-over">
-              <p className="wl-game-over-text">
-                Game Over! {game.status.toUpperCase()} — Solution: {game.solution}
-              </p>
-              <button className="wl-game-playagain" onClick={startNewGame}>Play Again</button>
+          {/* Popup for both errors & game over */}
+          {popupMessage && (
+            <div className="wl-popup-overlay">
+              <div className="wl-popup">
+                <p className="wl-popup-text">{popupMessage}</p>
+                <button onClick={() => popupMessage.includes("Game Over") ? startNewGame() : setPopupMessage("")}>
+                  {popupMessage.includes("Game Over") ? "Play Again" : "Close"}
+                </button>
+              </div>
             </div>
           )}
         </>

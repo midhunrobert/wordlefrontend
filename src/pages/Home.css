@@ -3,10 +3,9 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    padding: 0px;
-    box-sizing: border-box;
-    background: linear-gradient(135deg, #e0f7fa, #f1f8e9); /* soft gradient */
-    font-family: 'Arial', sans-serif;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #f9f9f9; /* plain light background */
   }
   
   /* Header */
@@ -14,51 +13,48 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 25px;
-    padding: 0 10px;
+    padding: 12px 16px;
+    border-bottom: 1px solid #ddd;
   }
   
   .wl-home-welcome {
-    font-size: 2rem;
-    color: #004d40; /* deep teal */
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #333;
   }
   
   .wl-home-logout {
-    padding: 10px 20px;
-    font-size: 1rem;
-    background-color: #f4511e; /* vibrant orange */
+    padding: 8px 16px;
+    font-size: 0.95rem;
+    background-color: #e63946;
     color: white;
     border: none;
-    border-radius: 6px;
+    border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s;
   }
   
   .wl-home-logout:hover {
-    background-color: #d84315;
+    background-color: #d62828;
   }
   
   /* Main content */
   .wl-home-main {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    flex: 1;
     align-items: center;
   }
   
-  /* Game container */
-  
-  /* Leaderboard container */
-  .wl-home-leaderboard{
-    flex: 1;
+  /* Leaderboard */
+  .wl-home-leaderboard {
     width: 100%;
     max-width: 300px;
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.12);
-    border-left: 5px solid #ffb74d; /* amber accent left border */
+    background: white;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
   }
   
   /* Auth pages stacked for mobile */
@@ -66,16 +62,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 25px;
+    gap: 20px;
   }
   
-  /* Desktop / larger screens */
+  /* Desktop screens */
   @media (min-width: 768px) {
     .wl-home-main {
       flex-direction: row;
-      gap: 40px;
-      align-items: flex-start;
       justify-content: center;
+      align-items: flex-start;
     }
   
     .wl-home-game {
@@ -84,7 +79,7 @@
   
     .wl-home-leaderboard {
       position: sticky;
-      top: 25px;
+      top: 20px;
       max-height: calc(100vh - 60px);
       overflow-y: auto;
     }
